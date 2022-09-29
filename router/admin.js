@@ -1,5 +1,5 @@
-var categoriesController=require('../controllers/admin');
-
+var categoriesController=require('../controllers/adminController');
+var userController=require('../controllers/usercontroller');
 //HTTP request mapping is done using routing technique
 module.exports=function(app){
     app.route('/api/categories')
@@ -12,6 +12,10 @@ module.exports=function(app){
              .post(categoriesController.postById)
     app.route('/api/products')
         .get(categoriesController.getAllProducts) 
-        .put(categoriesController.update) 
+        .put(categoriesController.update)
+    app.route('/api/admin/users')
+        .get(userController.getAll) 
+    app.route('/api/sellers')
+        .post(userController.getALLsellers) 
 };
 

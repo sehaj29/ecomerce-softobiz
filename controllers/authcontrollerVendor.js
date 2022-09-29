@@ -2,7 +2,7 @@ const sql=require('../models/db');
 exports.login=(req, res)=>{
     var email=req.body.email
     console.log(email)
-    let user = "select * from vendor";
+    let user = "select * from delivery_partner";
     sql.query(user,(err,rows,fields)=>{
        
         if(rows.find((person)=>(person.email===email))){
@@ -13,18 +13,16 @@ exports.login=(req, res)=>{
     }
     })
 }
-exports.register=(req, res)=>{let firstname=req.body.first_name;
+exports.register=(req, res)=>{
+    let firstname=req.body.Delivery_partner_name;
     console.log(firstname)
-    let lastname=req.body.last_name;
     let location=req.body.location;
-    let username=req.body.username;
-    let password=req.body.password;
-    let address=req.body.address;
-    let telephone=req.body.telephone;
-    let email=req.body.email;
+    let company_name=req.body.company_name;
+    let telephone=req.body.Delivery_partner_contact;
+    let email=req.body.Delivery_partner_email;
     console.log(email)
-    let command=`INSERT INTO user(first_name,last_name,username,password,address,telephone,email) VALUES (?,?,?,?,?,?,?)`;
-    sql.query(command,[firstname,lastname,username,password,address,telephone,email],(err, rows, fields)=>{
+    let command=`INSERT INTO user(first_name,telephone,email,company_name) VALUES (?,?,?,?)`;
+    sql.query(command,[firstname,telephone,email,company_name],(err, rows, fields)=>{
         if (err) throw err
         res.send("new user registrations...")
     })

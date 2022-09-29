@@ -9,6 +9,14 @@ exports.getAll=function(){
         })
     }) 
 };
+exports.getALLsellers=function(){
+    return new Promise(resolve=>{
+         let command="SELECT * FROM vendor";
+         sql.query(command,(err, rows, fields)=>{
+             resolve(rows);
+         })
+     }) 
+ };
 exports.update=function(req){
     return new Promise(resolve=>{
         var telephone=req.body.telephone

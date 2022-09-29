@@ -30,3 +30,8 @@ exports.remove=async (req, res)=>{
     result=await dal.remove(req.params.id)
     res.send(result);
 };
+exports.getALLsellers=async (req, res)=>{
+    let result=[];
+    result=await dal.getALLsellers()
+    res.send(result);
+};

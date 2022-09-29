@@ -1,5 +1,5 @@
 const { response } = require('express');
-const dal=require('../models/vendor');
+const dal=require('../models/seller');
 
 exports.edit= async function(req, res){  
     let result=[];
