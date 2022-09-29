@@ -16,6 +16,8 @@ module.exports=function(app){
     app.route('/api/admin/users')
         .get(userController.getAll) 
     app.route('/api/sellers')
-        .post(userController.getALLsellers) 
+        .get(userController.getALLsellers)
+    app.route('/api/vendors')
+        .get(userController.getALLvendors)
 };
 

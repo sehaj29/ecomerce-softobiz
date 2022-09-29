@@ -35,3 +35,8 @@ exports.getALLsellers=async (req, res)=>{
     result=await dal.getALLsellers()
     res.send(result);
 };
+exports.getALLvendors= async function(req, res){  
+    let result=[];
+    result=await dal.getALLvendors();
+    res.send(result); 
+};
