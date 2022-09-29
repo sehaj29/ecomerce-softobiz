@@ -6,16 +6,16 @@ module.exports=function(app){
    
             
             
-    app.route('/api/seller/add-products')
+    app.route('/api/seller/addproducts')
              .post(sellerController.insert)  //remove existing task whose id =12
-    app.route('/api/seller/delete-products')
+    app.route('/api/seller/deleteproducts')
             .delete(sellerController.remove)
 
-    app.route('/api/seller/edit-products')
+    app.route('/api/seller/editproducts')
             .put(sellerController.edit)
 
 
-    app.route('/api/seller/my-products')
+    app.route('/api/seller/myproducts')
             .post(sellerController.myproducts)
 
 

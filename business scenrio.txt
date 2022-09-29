@@ -1,0 +1,6 @@
+-----------To get all categories-----------
+
+API -  http://localhost:7000/api/categories
+METHOD- get
+
+-------------
