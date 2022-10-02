@@ -1,12 +1,5 @@
 const { response } = require('express');
 const dal=require('../models/seller');
-
-exports.edit= async function(req, res){  
-    let result=[];
-    result=await dal.edit();
-    res.send(result); 
-};
-
 exports.myproducts= async function(req, res){  
     let result=[];
     result=await dal.myproducts(req);

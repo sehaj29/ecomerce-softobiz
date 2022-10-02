@@ -13,16 +13,22 @@ exports.login=(req, res)=>{
     }
     })
 }
-exports.register=(req, res)=>{let firstname=req.body.first_name;
+exports.register=(req, res)=>{
+    console.log(req.body)
+    let firstname=req.body.Firstname;
     console.log(firstname)
-    let lastname=req.body.last_name;
+    let lastname=req.body.Lastname;
     let location=req.body.location;
-    let username=req.body.username;
+    let username=req.body.Username;
     let password=req.body.password;
-    let address=req.body.address;
-    let telephone=req.body.telephone;
+    let address=req.body.Address;
+    let telephone=req.body.Telephone;
     let email=req.body.email;
     console.log(email)
+    console.log(address)
+    console.log(telephone)
+    console.log(username)
+    console.log(password)
     let command=`INSERT INTO user(first_name,last_name,username,password,address,telephone,email) VALUES (?,?,?,?,?,?,?)`;
     sql.query(command,[firstname,lastname,username,password,address,telephone,email],(err, rows, fields)=>{
         if (err) throw err
