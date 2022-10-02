@@ -17,6 +17,9 @@ sellerRoutes(app)
 app.get('/user/register',(req,res)=>{
     res.render("../views/register")
 })
+app.get('/user/login',(req,res)=>{
+    res.render("../views/userLogin")
+})
 app.listen(7000,()=>{
     console.log("App server is listening on port 7000");
 })

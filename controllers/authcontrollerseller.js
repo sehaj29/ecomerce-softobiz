@@ -1,16 +1,34 @@
 const sql=require('../models/db');
+var jwt = require('jsonwebtoken'); 
+var config = require('../config');
 exports.login=(req, res)=>{
-    var email=req.body.email
-    console.log(email)
-    let user = "select * from vendor";
-    sql.query(user,(err,rows,fields)=>{
-       
-        if(rows.find((person)=>(person.email===email))){
-           res.send("welcome")
+    var post  = {
+		password:req.body.password,
+		email:req.body.email
+	}
+
+	var query = "SELECT * FROM ?? WHERE ??=? AND ??=?";
+
+	var table = ["user","password",  post.password, "email", post.email];
+
+	query = mysql.format(query,table);
+    sql.query(query,(err,rows,fields)=>{
+
+        if (err) throw err
+        else{
+            if(rows.length==1){
+				var token = jwt.sign(rows, config.secret, {
+					expiresIn: 1440
+
+				});
+
+            
         }
-    else{
-        message="Invalid User";
+        else{
+            message="Invalid User";
+        }
     }
+       
     })
 }
 exports.register=(req, res)=>{let firstname=req.body.first_name;

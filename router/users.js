@@ -9,13 +9,14 @@ module.exports=function(app){
             .put(userController.update) 
     app.route('/api/users/:id')
              .delete(userController.remove)  
-             .get(userController.getById)  //get  existing task whose id =12
+             .get(userController.getById)
+             
              
     app.route('/api/users/login')
             .post(authController.login);
     app.route('/api/users/register')
             .post(authController.register);
-            
+          
             
             
             

@@ -6,5 +6,5 @@ module.exports=function(app){
             .post(authController.login);
     app.route('/api/vendors/register')
             .post(authController.register);
-   
+            
 };

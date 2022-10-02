@@ -1,16 +1,42 @@
 const sql=require('../models/db');
+var jwt = require('jsonwebtoken'); 
+var config = require('../config');
+const { json } = require('express');
 exports.login=(req, res)=>{
-    var email=req.body.email
-    console.log(email)
-    let user = "select * from user";
-    sql.query(user,(err,rows,fields)=>{
-       
-        if(rows.find((person)=>(person.email===email))){
-           res.send("welcome")
+    let data = req.body
+    var post  = {
+		password:req.body.password,
+		email:req.body.email
+	}
+
+	var query = "SELECT * FROM ?? WHERE ??=? AND ??=?";
+
+	var table = ["user","password",  post.password, "email", post.email];
+
+	query = sql.format(query,table);
+    sql.query(query,(err,rows,fields)=>{
+
+        if (err) throw err
+        else{
+            if(rows.length==1){
+                let userData = {
+                    time: Date(),
+                    email: data.email,
+                  };
+                
+				var token = jwt.sign(userData, config.secret, {
+                    expiresIn: 72 * 3600,
+
+				});
+
+                userData.token = token;
+                console.log("Login Successful:", userData);
         }
-    else{
-        message="Invalid User";
+        else{
+            message="Invalid User";
+        }
     }
+       
     })
 }
 exports.register=(req, res)=>{
