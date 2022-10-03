@@ -14,8 +14,9 @@ exports.login=(req, res)=>{
 	var table = ["user","password",  post.password, "email", post.email];
 
 	query = sql.format(query,table);
+    
     sql.query(query,(err,rows,fields)=>{
-
+        console.log(query)
         if (err) throw err
         else{
             if(rows.length==1){
@@ -25,17 +26,21 @@ exports.login=(req, res)=>{
                   };
                 
 				var token = jwt.sign(userData, config.secret, {
-                    expiresIn: 72 * 3600,
+                    expiresIn: 50 * 3600,
+                    
 
 				});
+                console.log(token);
+                
+                
 
-                userData.token = token;
-                console.log("Login Successful:", userData);
         }
         else{
-            message="Invalid User";
+            res.status(403).send("Invalid User");
         }
+        
     }
+    res.status(200).render(index.html);
        
     })
 }
