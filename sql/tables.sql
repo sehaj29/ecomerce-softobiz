@@ -93,16 +93,23 @@ create table Delivery_partner(id int NOT NULL PRIMARY KEY auto_increment,
 
 --------------------------seller---------------
 
-create table seller(id int NOT NULL PRIMARY KEY auto_increment,
- 	suppliername              VARCHAR(75) NOT NULL,
-    supplier_username              VARCHAR(75) NOT NULL,
-     supplierprimarycontact    CHAR(20) NOT NULL,
-     suppliersecondarycontact  CHAR(20) NULL,
-     supplieremail             VARCHAR(50) NULL,
-     supplieraddress           VARCHAR(500) NOT NULL,
-     suppliercity              VARCHAR(75) NOT NULL,
-     supplierstate             VARCHAR(75) NOT NULL,
-     suppliercountry           VARCHAR(75) NOT NULL,
-     supplierzipcode           VARCHAR(75) NOT NULL
-     
+create table seller (
+seller_id int NOT NULL PRIMARY KEY auto_increment,
+user_id int,
+	 FOREIGN KEY(user_id ) REFERENCES user(user_id ),
+account_no int NOT NULL UNIQUE,
+amount int,
+GST_no int);
+
+-------------------------transactions----------------------------
+
+CREATE TABLE transactions (
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    from_account INT,
+    to_account INT,
+    amount FLOAT ,
+    created_at DATETIME,
+    FOREIGN KEY(from_account) REFERENCES accounts(id),
+    FOREIGN KEY(to_account) REFERENCES accounts(id)
 );
+
