@@ -1,5 +1,7 @@
-const express=require('express');
-const usersRoutes=require('./router/users');
+import express from 'express'
+
+import userRoutes from './router/users';
+import 
 const categoriesRoutes=require('./router/admin');
 const userRoutes=require('./router/users');
 const vendorRoutes=require('./router/vendors');
