@@ -2,6 +2,7 @@ import sql from './db.js'
 
 
 export default class AuthControllerVendor {
+    constructor(){  }
     login = (req, res) => {
         var email = req.body.email
         console.log(email)

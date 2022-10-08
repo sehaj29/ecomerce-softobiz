@@ -1,5 +1,4 @@
-//database connectivity
-const mysql=require('mysql');
+import mysql from 'mysql';
 //connection string
 const conUri={
     host:'localhost',
@@ -8,7 +7,7 @@ const conUri={
     database:'ecommerce'
 };
 
-const con=mysql.createConnection(conUri);
+ const con=mysql.createConnection(conUri);
 con.connect((err)=>{
     if(!err){
         console.log("connection is successful with mysql DB");
@@ -18,4 +17,4 @@ con.connect((err)=>{
     }
 });
 
-module.exports=con;
+export default con;

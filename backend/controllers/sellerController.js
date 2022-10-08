@@ -3,16 +3,19 @@ import dal from '../models/seller.js'
 
 
 export class SellerController {
-    constructor(){ }
+    constructor(sellermgr){
+        this.dal=sellermgr
+
+     }
     myproducts = async function (req, res) {
         let result = [];
-        result = await dal.myproducts(req);
+        result = await this.dal.myproducts(req);
         res.send(result);
     };
 
     insert = async (req, res) => {
         let result = [];
-        result = await dal.insert(req);
+        result = await this.dal.insert(req);
         res.send(result);
     };
 
@@ -20,12 +23,12 @@ export class SellerController {
 
     remove = async (req, res) => {
         let result = [];
-        result = await dal.remove(req.params.id)
+        result = await this.dal.remove(req.params.id)
         res.send(result);
     };
     edit = async (req, res) => {
         let result = [];
-        result = await dal.edit(req)
+        result = await this.dal.edit(req)
         res.send(result);
     };
 }

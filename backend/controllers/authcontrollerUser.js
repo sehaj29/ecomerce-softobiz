@@ -2,6 +2,7 @@ import sql from './db.js'
 import jwt from 'jsonwebtoken'
 import config from '../config.js'
 export default class AuthControllerUser {
+    constructor(){  }
     login = (req, res) => {
         let data = req.body
         var post = {
