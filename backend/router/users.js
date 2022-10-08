@@ -1,4 +1,4 @@
-var authController=require('../controllers/authcontrollerUser');
+import '../controllers/authcontrollerUser');
 var userController=require('../controllers/usercontroller');
 
 //HTTP request mapping is done using routing technique
