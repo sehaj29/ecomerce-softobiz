@@ -1,4 +1,4 @@
-import sql from './db.js'
+import sql from '../models/db.js'
 import jwt from 'jsonwebtoken'
 import config from '../config.js'
 export default class AuthControllerUser {

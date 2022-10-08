@@ -1,4 +1,4 @@
-import AuthControllerVendor from '../controllers/authcontrollerVendor';
+import AuthControllerVendor from '../controllers/authControllerVendor.js';
 export default function (app) {
         let authController=new AuthControllerVendor() ;
 

@@ -4,8 +4,8 @@ import Users from '../models/users.js'
 
 //HTTP request mapping is done using routing technique
 export default function (app) {
-        let usermgr=new Users();
-        let userController=new UserController(usermgr);
+        let mgr=new Users();
+        let userController=new UserController(mgr);
         let authController=new AuthControllerUser();
 
         app.route('/api/users')

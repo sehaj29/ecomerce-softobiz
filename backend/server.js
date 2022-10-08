@@ -1,13 +1,11 @@
 import express from 'express'
-
-import userRoutes from './router/users';
-import 
-const categoriesRoutes=require('./router/admin');
-const userRoutes=require('./router/users');
-const vendorRoutes=require('./router/vendors');
-const sellerRoutes=require('./router/seller');
+import expressSession from 'express-session';
+import userRoutes from './router/users.js';
+import categoriesRoutes from './router/admin.js'
+import vendorRoutes from './router/vendors.js'
+import sellerRoutes from './router/seller.js';
 const app=express();
-const cors=require('cors');
+import cors from 'cors';
 app.use(cors());
 
 

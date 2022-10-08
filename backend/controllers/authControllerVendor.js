@@ -1,4 +1,4 @@
-import sql from './db.js'
+import sql from '../models/db.js'
 
 
 export default class AuthControllerVendor {

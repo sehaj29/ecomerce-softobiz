@@ -1,13 +1,12 @@
 
-import dal from '../models/seller.js'
 
 
-export class SellerController {
+export default class SellerController {
     constructor(sellermgr){
         this.dal=sellermgr
 
      }
-    myproducts = async function (req, res) {
+    myproducts = async (req, res)=> {
         let result = [];
         result = await this.dal.myproducts(req);
         res.send(result);

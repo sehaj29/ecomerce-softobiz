@@ -1,18 +1,17 @@
 
-import dal from '../models/admin.js'
 
 export default class AdminController {
     constructor(adminmgr){
         this.dal=adminmgr;
 
     }
-    getAll = async function (req, res) {
+    getAll = async (req, res)=> {
         let result = [];
         result = await this.dal.getAll();
         res.send(result);
     };
 
-    getById = async function (req, res) {
+    getById = async (req, res) =>{
         let result = [];
         result = await this.dal.getById(req.params.id);
         res.send(result);

@@ -1,45 +1,44 @@
 
-export class UserController {
-    constructor(usermgr){
-        this.dal=usermgr
-    }
-    getAll = async function (req, res) {
-        let result = [];
-        result = await this.dal.getAll();
+export default class UserController {
+    constructor(mgr){
+        this.repoManager=mgr;
+        }
+    getAll = async(req, res)=> {
+        let result = await this.repoManager.getAll();
         res.send(result);
     };
 
-    getById = async function (req, res) {
+    getById = async (req, res)=> {
         let result = [];
-        result = await this.dal.getById(req.params.id);
+        result = await this.repoManager.getById(req.params.id);
         res.send(result);
     };
 
     insert = async (req, res) => {
         let result = [];
-        result = await this.dal.insert(req);
+        result = await this.repoManager.insert(req);
         res.send(result);
     };
 
     update = async (req, res) => {
         let result = [];
-        result = await this.dal.update(req);
+        result = await this.repoManager.update(req);
         res.send(result);
     };
 
     remove = async (req, res) => {
         let result = [];
-        result = await this.dal.remove(req.params.id)
+        result = await this.repoManager.remove(req.params.id)
         res.send(result);
     };
     getALLsellers = async (req, res) => {
         let result = [];
-        result = await this.dal.getALLsellers()
+        result = await this.repoManager.getALLsellers()
         res.send(result);
     };
-    getALLvendors = async function (req, res) {
+    getALLvendors = async  (req, res)=> {
         let result = [];
-        result = await this.dal.getALLvendors();
+        result = await this.repoManager.getALLvendors();
         res.send(result);
     };
 }
