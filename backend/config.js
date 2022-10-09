@@ -1,6 +1,3 @@
-let secretkey={
-    // secret: used when we create and verify JSON Web Tokens
-                        secret:'jsismagic',
-        
-    };
-export default secretkey;
+const jwtSecretKey = "ecom_secret";
+
+export default { jwtSecretKey };

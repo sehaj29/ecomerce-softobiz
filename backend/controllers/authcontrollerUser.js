@@ -15,9 +15,11 @@ export default class AuthControllerUser {
         var table = ["user", "password", post.password, "email", post.email];
 
         query = sql.format(query, table);
+        console.log(query)
 
         sql.query(query, (err, rows, fields) => {
             console.log(query)
+            console.log(rows)
             if (err) throw err
             else {
                 if (rows.length == 1) {
@@ -41,7 +43,7 @@ export default class AuthControllerUser {
                 }
 
             }
-            res.status(200).render(index.html);
+            
 
         })
     }

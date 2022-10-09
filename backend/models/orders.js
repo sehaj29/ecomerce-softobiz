@@ -14,10 +14,11 @@ export default class Orders{
         var table = ["customer", "username", username];
 
         query = sql.format(query, table);
-
+        console.log(query)
           
             sql.query(command, (err, rows, fields) => {
                 console.log(rows)
+
                 resolve(rows);
             })
         })

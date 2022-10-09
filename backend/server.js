@@ -24,5 +24,5 @@ app.get('/user/login',(req,res)=>{
     res.render("../views/userLogin")
 })
 app.listen(8000,()=>{
-    console.log("App server is listening on port 7000");
+    console.log("App server is listening on port 8000");
 })
