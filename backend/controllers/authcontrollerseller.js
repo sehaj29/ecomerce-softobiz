@@ -10,14 +10,14 @@ export default class AuthControllerSeller {
 
         var query = "SELECT ??,?? FROM ??,?? WHERE ??=? AND ??=?";
 
-        var table = ["username","password","customer", "user", "username", post.username, "password",post.password];
+        var table = ["username", "password", "seller", "user", "username", post.username, "password", post.password];
 
         query = sql.format(query, table);
         sql.query(query, (err, rows, fields) => {
             let userData = {
                 username: post.username,
-                password:post.password
-              };
+                password: post.password
+            };
 
             if (err) throw err
             else {
