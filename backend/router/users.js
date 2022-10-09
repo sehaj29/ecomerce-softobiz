@@ -17,7 +17,7 @@ export default function (app) {
                 .get(userController.getById)
 
 
-        app.route('/api/users/login')
+        app.route('/api/customer/login')
                 .post(authController.login);
         app.route('/api/users/register')
                 .post(authController.register);

@@ -7,11 +7,11 @@ export default class Orders{
     let token =req.header(authKey);
     let extractedData=jwt.verify(token,jwtSecretKey)
     console.log(extractedData)
-    let username=extractedData.client
+    let username=extractedData.username
 
-    var query = "SELECT customer_id FROM ?? WHERE ??=? ";
+    var query = "SELECT * FROM ?? WHERE ??=? ";
 
-        var table = ["customer", "username", username];
+        var table = ["", "username", username];
 
         query = sql.format(query, table);
         console.log(query)

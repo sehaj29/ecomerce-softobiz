@@ -1,6 +1,6 @@
 import sql from '../models/db.js'
 import jwt from 'jsonwebtoken'
-import config from '../config.js'
+import secret from '../config.js'
 export default class AuthControllerUser {
     constructor(){  }
     login = (req, res) => {

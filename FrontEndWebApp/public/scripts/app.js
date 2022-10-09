@@ -3,8 +3,9 @@
 //Client Side Javascript Code
 
 var fetchData=()=>{
+  console.log("hello")
    // alert("button is clicked.....");
-    let url="http://localhost:8000/api/products";
+    let url="http://localhost:8000/api/allproducts";
     //use Ajax mechanism to fetch data from  rest api
     //it is inbuilt function of jQuery Library
     $.ajax({
@@ -22,7 +23,7 @@ var fetchData=()=>{
             let productList=document.getElementById("productList");
             for(var i=0;i<data.length;i++){
                 const node = document.createElement("li");
-                const textnode = document.createTextNode(data[i].title);
+                const textnode = document.createTextNode(data[i].Product_name);
                 node.appendChild(textnode);
                 productList.appendChild(node);
             }  
@@ -55,7 +56,7 @@ var fetchProductDetails=()=>{
         .catch(() => (apiError = true));
 }
 
-var onLogin=()=>{
+var onSellerLogin=()=>{
     let username=document.getElementById("username").value;
     let password=document.getElementById("password").value;
     let credential={};
@@ -73,6 +74,26 @@ var onLogin=()=>{
             localStorage.setItem("receivedtoken",data);  //browsers cache memory
         }
     });
+}
+var onCustomerLogin=()=>{
+  let username=document.getElementById("username").value;
+  let password=document.getElementById("password").value;
+  let credential={};
+  credential.username=username;
+  credential.password=password;
+  let loginUrl="http://localhost:8000/api/customer/login";
+  $.ajax({
+      url: loginUrl,
+      type:"POST",
+      data:credential,
+      success: (data, status)=>{
+          console.log("on successfull login");
+          console.log(status);
+          console.log(data);
+          localStorage.setItem("receivedtoken",data);  //browsers cache memory
+          location.replace("/list.html")
+      }
+  });
 }
 
 var fetchOrders=()=>{
