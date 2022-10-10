@@ -1,5 +1,5 @@
 
-import sql from './db.js'
+import sql from '../services/Db/db.js'
 
 export default class Admin {
 

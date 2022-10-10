@@ -26,6 +26,14 @@ var fetchData=()=>{
                 const textnode = document.createTextNode(data[i].Product_name);
                 node.appendChild(textnode);
                 productList.appendChild(node);
+                //<button onclick="details">details</button>
+                let details=()=>{
+                  location.replace("/details.html");
+                  getElementById("id").innerText=data[i].id
+                  getElementById("description").innerText=data[i].Product_desc
+
+              }
+
             }  
         }
       });
@@ -76,6 +84,7 @@ var onSellerLogin=()=>{
     });
 }
 var onCustomerLogin=()=>{
+  console.log("clogin")
   let username=document.getElementById("username").value;
   let password=document.getElementById("password").value;
   let credential={};
@@ -128,4 +137,29 @@ var fetchOrders=()=>{
           }
         })
         .catch(() => (apiError = true));
+}
+var fetchOrders=()=>{
+  console.log("orders")
+  let apiError;
+  let result;
+  let token= localStorage.getItem("receivedtoken");
+  console.log(token);
+  fetch("http://localhost:8000/api/myorders", {
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization":token
+      }
+    })
+      .then(async response => {
+        if (response.ok) {
+          apiError = false;
+          result = await response.json();
+          console.log("orders")
+          console.log(result);
+           
+        } else {
+          apiError = true;
+        }
+      })
+      .catch(() => (apiError = true));
 }

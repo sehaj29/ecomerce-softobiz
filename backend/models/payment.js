@@ -1,4 +1,4 @@
-import sql from './db.js'
+import sql from '../services/Db/db.js'
 export default class Payment {
     construcor(){  }
     
@@ -23,17 +23,20 @@ export default class Payment {
       let command = `INSERT INTO orders (status, customer_id, created_at, modified_at,total_amount) VALUES ("pending", ${data.customer_id}, "${timeStamp}", "${timeStamp}","${amount}");
       SET @order_id = LAST_INSERT_ID();
       INSERT INTO order_details (order_id, product_id, price, quantity, created_at, modified_at) VALUES ${orderDataValues};
-      ${productQuantityUpdateQuery}`;
+      ${productQuantityUpdateQuery}
+      CALL fundTransfer(${amount},@order_id,${})`;
 
       sql.query(command, (err, rows, fields) => {
         if (err) {
           console.log(err);
           resolve({ error: "Unable to place order." });
-        } else {
-          resolve({ message: "Inserted!" });
-        }
+        } 
+         
+      
       });
+      
     });
+    
   };
 
     

@@ -1,4 +1,4 @@
-import sql from './db.js'
+import sql from '../services/Db/db.js'
 import jwt from 'jsonwebtoken';
 import secret from '../config.js'
 

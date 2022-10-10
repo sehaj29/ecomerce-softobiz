@@ -11,7 +11,9 @@ export default function (app) {
     app.route('/api/allproducts')
             .get(productController.getAll)  //remove existing task whose id =12
    
-
+    
+    app.route('/api/products/:id')
+            .get(productController.getById)
 
 
 
