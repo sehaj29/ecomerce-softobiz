@@ -97,11 +97,12 @@ var onCustomerLogin=()=>{
 }
 
 var fetchOrders=()=>{
+    console.log("orders")
     let apiError;
     let result;
     let token= localStorage.getItem("receivedtoken");
     console.log(token);
-    fetch("//localhost:8000/api/myorders", {
+    fetch("http://localhost:8000/api/myorders", {
         headers: {
           "Content-Type": "application/json",
           "Authorization":token
@@ -111,11 +112,13 @@ var fetchOrders=()=>{
           if (response.ok) {
             apiError = false;
             result = await response.json();
+            console.log("orders")
             console.log(result);
             let ordersList=document.getElementById("lstOrders");
+            location.replace("/orders.html")
             for(var i=0;i<result.length;i++){
                 const node = document.createElement("li");
-                const textnode = document.createTextNode(result[i].orderid+" " +result[i].date  +" " +result[i].status );
+                const textnode = document.createTextNode(result[i].orderid+" " +result[i].status  +" " +result[i].total_amount );
                 node.appendChild(textnode);
                 ordersList.appendChild(node);
                 

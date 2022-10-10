@@ -14,6 +14,7 @@ export default class OrdersController {
     };
 
     myorders = async (req, res) => {
+        console.log("async")
         let result = [];
         result = await this.repoManager.myorders(req);
         res.send(result);

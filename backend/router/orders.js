@@ -1,4 +1,4 @@
-import OrdersController from '../controllers/ordersController.js';
+import OrdersController from '../controllers/odersController.js';
 import Orders from '../models/Orders.js'
 
 
@@ -10,11 +10,7 @@ export default function (app) {
 
     app.route('/api/myorders')
             .get(ordersController.myorders)  //remove existing task whose id =12
-    app.route('/api/allorders')
-            .get(ordersController.getAll)
-
-    app.route('/api/editorders')
-            .put(ordersController.edit)
+   
 
 
 

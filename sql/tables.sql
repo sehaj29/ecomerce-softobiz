@@ -105,11 +105,11 @@ GST_no int);
 
 CREATE TABLE transactions (
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    from_account INT,
-    to_account INT,
-    amount FLOAT ,
+    from_account VARCHAR(50),
+    to_account VARCHAR(50),
+    amount FLOAT DEFAULT 0,
     created_at DATETIME,
-    FOREIGN KEY(from_account) REFERENCES accounts(id),
-    FOREIGN KEY(to_account) REFERENCES accounts(id)
+    FOREIGN KEY(from_account) REFERENCES accounts(account_number),
+    FOREIGN KEY(to_account) REFERENCES accounts(account_number)
 );
 

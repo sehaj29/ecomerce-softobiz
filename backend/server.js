@@ -5,6 +5,7 @@ import categoriesRoutes from './router/admin.js'
 import vendorRoutes from './router/vendors.js'
 import sellerRoutes from './router/seller.js';
 import productRoutes from './router/products.js'
+import ordersRoutes from './router/orders.js'
 const app=express();
 import cors from 'cors';
 app.use(cors());
@@ -19,6 +20,7 @@ userRoutes(app)
 vendorRoutes(app)
 sellerRoutes(app)
 productRoutes(app)
+ordersRoutes(app)
 app.get('/user/register',(req,res)=>{
     res.render("../views/register")
 })
