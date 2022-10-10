@@ -14,6 +14,8 @@ export default function (app) {
     
     app.route('/api/products/:id')
             .get(productController.getById)
+    app.route('/api/myproducts')
+            .get(productController.myproducts)
 
 
 

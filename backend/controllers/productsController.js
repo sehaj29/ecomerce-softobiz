@@ -24,4 +24,9 @@ export default class ProductController {
         result = await this.repoManager.update(req);
         res.send(result);
     };
+    myproducts = async (req, res) => {
+        let result = [];
+        result = await this.repoManager.myproducts(req);
+        res.send(result);
+    };
 }

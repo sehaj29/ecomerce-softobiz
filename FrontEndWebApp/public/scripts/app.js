@@ -79,7 +79,8 @@ var onSellerLogin=()=>{
             console.log("on successfull login");
             console.log(status);
             console.log(data);
-            localStorage.setItem("receivedtoken",data);  //browsers cache memory
+            localStorage.setItem("receivedtoken",data);  
+            location.replace("/sellerdashboard.html")
         }
     });
 }
@@ -99,7 +100,7 @@ var onCustomerLogin=()=>{
           console.log("on successfull login");
           console.log(status);
           console.log(data);
-          localStorage.setItem("receivedtoken",data);  //browsers cache memory
+          localStorage.setItem("receivedtoken",data);  
           location.replace("/list.html")
       }
   });
@@ -138,28 +139,87 @@ var fetchOrders=()=>{
         })
         .catch(() => (apiError = true));
 }
-var fetchOrders=()=>{
-  console.log("orders")
-  let apiError;
-  let result;
-  let token= localStorage.getItem("receivedtoken");
-  console.log(token);
-  fetch("http://localhost:8000/api/myorders", {
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization":token
+
+  
+  
+  var changepassword=()=>{
+    
+    var oldP=document.getElementById("oldp").value;
+    var newP=document.getElementById("newp").value;
+    var confirmP =document.getElementById("confirmp").value;
+    let updateUrl="http://localhost:8000/api/changePassword";
+    let token= localStorage.getItem("receivedtoken");
+    let credential={};
+    credential.password=oldP;
+    credential.confirmpassword=confirmP;
+  
+    if(oldP!=""&&newP!=""&&confirmP!="")
+    {
+      if(oldP!=newP)
+      {
+        if(newP==confirmP)
+         {
+          $.ajax({
+            url: updateUrl,
+            type:"PUT",
+            data:credential,
+            
+            success: (data, status)=>{
+                console.log("on successfull update");
+                console.log(status);
+                console.log(data);
+                if(status=="success"){
+                  location.replace("/index.html")
+                }
+              }
+              })
+         }
+         else
+          {
+            alert("Confirm password is not same as you new password.");
+            return false;
+          }
       }
-    })
-      .then(async response => {
-        if (response.ok) {
-          apiError = false;
-          result = await response.json();
-          console.log("orders")
-          console.log(result);
-           
-        } else {
-          apiError = true;
+      else
+     {
+      alert(" This Is Your Old Password,Please Provide A New Password");
+      return false;
+     }
+    }
+    else
+    {
+     alert("All Fields Are Required");
+     return false;
+    }
+  }
+  var myproducts=()=>{
+    console.log("products")
+    let apiError;
+    let result;
+    let token= localStorage.getItem("receivedtoken");
+    console.log(token);
+    fetch("http://localhost:8000/api/myproducts", {
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization":token
         }
       })
-      .catch(() => (apiError = true));
+        .then(async response => {
+          if (response.ok) {
+            apiError = false;
+            result = await response.json();
+            console.log("orders")
+            console.log(result);
+            let productList=document.getElementById("productList");
+            for(var i=0;i<data.length;i++){
+                const node = document.createElement("li");
+                const textnode = document.createTextNode(data[i].Product_name);
+                node.appendChild(textnode);
+                productList.appendChild(node);
+            }
+          } else {
+            apiError = true;
+          }
+        })
+        .catch(() => (apiError = true));
 }

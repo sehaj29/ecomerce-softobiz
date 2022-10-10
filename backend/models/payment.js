@@ -24,7 +24,7 @@ export default class Payment {
       SET @order_id = LAST_INSERT_ID();
       INSERT INTO order_details (order_id, product_id, price, quantity, created_at, modified_at) VALUES ${orderDataValues};
       ${productQuantityUpdateQuery}
-      CALL fundTransfer(${amount},@order_id,${})`;
+      `;
 
       sql.query(command, (err, rows, fields) => {
         if (err) {
