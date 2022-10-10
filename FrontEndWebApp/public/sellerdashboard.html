@@ -12,12 +12,17 @@
     
         <hr/>
         <div>
-                <button onclick="myproducts()">MyProducts</button>
+                <button onclick="navigateToAnotherUrl()">MyProducts</button>
                 <br/>
                 <button onclick="addproducts">AddProduct</button>
                 <br/>
                 <button onclick="editproducts">EditProduct</button>
                 <br/>
         </div>
+        <script>
+            let navigateToAnotherUrl=()=>{
+                location.replace("/myproducts.html");
+            }
+        </script>
     </body>
 </html>

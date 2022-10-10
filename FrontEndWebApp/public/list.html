@@ -2,13 +2,12 @@
 <html>
     <head>
         <title>Product Catalog</title>
-        <script src="/scripts/jquery-3.2.1.min.js"></script>
-        <script src="/scripts/app.js"></script>
+      
     </head>
     <body>
         <h1>WELCOME TO ECOMMERCE</h1>
         <hr/>
-        <button onclick="fetchOrders()">MyOrders</button> | <button onclick="changepassword()">ChangePassword</button>
+        <button onclick="orders()">MyOrders</button> | <button onclick="changepassword()">ChangePassword</button>
         <hr/>
         <div>
              <h2>Todays products for sale</h2>
@@ -21,6 +20,11 @@
             let changepassword=()=>{
                 location.replace("/changepassword.html");
             }
+            let orders=()=>{
+                location.replace("/orders.html");
+            }
+            
+
         </script>
     </body>
 </html>
