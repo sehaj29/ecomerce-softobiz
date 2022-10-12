@@ -12,8 +12,13 @@ const app=express();
 import cors from 'cors';
 app.use(cors());
 
-
-app.set('view engine','ejs');
+var sessionMiddlware=expressSession({
+    secret:'cart',
+    saveUninitialized:true,
+    cookie: { maxAge: oneDay },
+    resave: false 
+});
+app.use(sessionMiddlware);
 //middleware configuration
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());

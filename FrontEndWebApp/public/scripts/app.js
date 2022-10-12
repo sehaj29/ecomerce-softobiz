@@ -209,7 +209,7 @@ var myproducts = () => {
         for (var i = 0; i < result.length; i++) {
           console.log(i)
           const node = document.createElement("li");
-          const textnode = document.createTextNode(result[i].id + " " + result[i].Product_name + " " + result[i].Product_desc + " " + result[i].Prdouct_price + " " + result[i].quantity);
+          const textnode = document.createTextNode(result[i].id + " " + result[i].Product_name + " " + result[i].Product_desc + " " + result[i].Product_price + " " + result[i].quantity);
           node.appendChild(textnode);
           productList.appendChild(node);
         }
